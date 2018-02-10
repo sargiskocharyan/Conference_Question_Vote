@@ -1,0 +1,5 @@
+{
+  "MONGO_DATABASE_NAME" : "cqv_questions",
+  "MONGO_URL" : "mongodb://localhost:27017",
+  "PORT" : "3000"
+}

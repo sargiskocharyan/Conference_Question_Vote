@@ -1,0 +1,25 @@
+.star-rating {
+    line-height:32px;
+    font-size:1.25em;
+}
+
+.star-rating .fa-star{color: yellow;}
+
+.center_button {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.header_title {
+   text-align: center;
+}
+
+.login-bar {
+    padding-top: 15px;
+}
+#label_priority {
+    text-align: center;
+}
+input {
+    text-align: center;
+}

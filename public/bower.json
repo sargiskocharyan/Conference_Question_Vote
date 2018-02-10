@@ -1,0 +1,11 @@
+{
+  "name": "public",
+  "authors": [
+    "Sargis Kocharyan <kocharyan.sargis@gmail.com>"
+  ],
+  "description": "",
+  "main": "js/app/index.js",
+  "license": "MIT",
+  "homepage": "",
+  "private": true
+}

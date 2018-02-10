@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html c-whitespace="preserve" xmlns="http://www.w3.org/1999/html">
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+  </head>
+  <body>
+    <div class='container'>
+      <div class='navbar navbar-info'>
+        <div class='container-fluid'>
+          <div class='navbar-header'>
+            <h1></h1>
+          </div>
+          <div class='nav navbar-nav navbar-right login-bar'>
+            <if (data.isUserAdmin == false && data.isUserLecturer == false && data.isUserAttendee == false )>
+              <a href='/api/login'>Login</a>
+            </if>
+            <else>
+              <div class='col-xs center_button' >
+                <p>${data.username}</p>
+                <button type='button' class='btn btn-default btn-xs ' onclick="logOutUser(\'${data.username}\')">
+                  Logout
+                </button>
+              </div>
+            </else>
+
+          </div>
+        </div>
+      </div>
+
+      <div class='container'>
+        <div class='row'>
+          <div class='col-xs-9'>
+            <div class='panel panel-info'>
+              <div class='panel-heading'>
+                <div class='panel-title'>
+                  <div class='row'>
+                    <div class='col-xs-6'>
+                      <h3 class="header_title">Questions List</h3>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div class='panel-body'>
+                <await (data from data)>
+                  <await-placeholder>
+                      <img src='img/spinner.gif' />
+                  </await-placeholder>
+                  <for (item in data.questions)>
+                  <div class='row'>
+
+                    <div class='col-xs-1 center_button'>
+                      <img class='img-responsive' src='images/question.png'>
+                    </div>
+                    <div class='col-xs-7'>
+                      <h4 class='product-name'><strong>${item.content}</strong> ${data.isUserLecturer}</h4>
+
+                    </div>
+                    <div class='col-xs-2'>
+
+                      <h6 id="label_priority">Rate<br> from 0 to 10</h6>
+                      <input class='form-control'  type="number" name="rate" min="1" max="10" value='${item.priority}'  onblur="updateQuestion(this.value, \'${item.id}\')">
+
+
+
+                    </div>
+                    <div class='col-xs-2'>
+                      <if (data.isUserAdmin == true ) >
+                        <div class='col-xs center_button'>
+                          <button id="\'${item.id}\'" type='button' class='btn btn-link btn-xs' onclick="deleteQuestion(\'${item.id}\')">
+                            <span class='glyphicon glyphicon-trash'> </span>
+                          </button>
+
+                        </div>
+                      </if>
+                      <if (data.isUserLecturer == true)>
+                        <div class='col-xs center_button' >
+                          <button type='button' class='btn btn-default btn-xs ' onclick="closeQuestion(\'${item.id}\')">
+                            Close
+                          </button>
+                        </div>
+                      </if>
+                    </div>
+
+                  </div>
+                  <hr />
+                  </for>
+                </await>
+                <hr>
+                <div class='row'>
+                  <if (data.isUserAttendee == true)>
+                    <div class='text-center'>
+                      <div class='col-xs-8'>
+                        <input id="new_question_id" type='text' class='form-control input-sm' value='' placeholder="Add your question">
+                      </div>
+                      <div class='col-xs-2'>
+                        <input id="new_question_priority_id" type='text' class='form-control input-sm' value='' placeholder="set priority">
+                      </div>
+                      <div class='col-xs-2'>
+                        <button type='button' class='btn btn-default btn-sm btn-block' onclick="addNewQuestion()">
+                          Add
+                        </button>
+                      </div>
+                    </div>
+                  </if>
+                </div>
+              </div>
+              <div class='panel-footer'>
+                <div class='row text-center'>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script type ="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script type ="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js" ></script>
+      <script src='js/app/Questions/Question.js'></script>
+      <script src='js/app/Utilities/const.js'></script>
+      <script src='js/app/index.js'></script>
+
+      <await-reorderer/>
+    </div>
+
+  </body>
+
+</html>
