@@ -47,9 +47,7 @@ function render(input, out, __component, component, state) {
         marko_forEach(data.questions, function(item) {
           out.w("<div class=\"row\"><div class=\"col-xs-1 center_button\"><img class=\"img-responsive\" src=\"images/question.png\"></div><div class=\"col-xs-7\"><h4 class=\"product-name\"><strong>" +
             marko_escapeXml(item.content) +
-            "</strong> " +
-            marko_escapeXml(data.isUserLecturer) +
-            "</h4></div><div class=\"col-xs-2\"><h6 id=\"label_priority\">Rate<br> from 0 to 10</h6><input class=\"form-control\" type=\"number\" name=\"rate\" min=\"1\" max=\"10\" value=\"" +
+            "</strong></h4></div><div class=\"col-xs-2\"><h6 id=\"label_priority\">Rate<br> from 0 to 10</h6><input class=\"form-control\" type=\"number\" name=\"rate\" min=\"1\" max=\"10\" value=\"" +
             marko_escapeXmlAttr(item.priority) +
             "\" onblur=\"updateQuestion(this.value, '" +
             marko_escapeXmlAttr(item.id) +
@@ -77,18 +75,20 @@ function render(input, out, __component, component, state) {
   out.w("<hr><div class=\"row\">");
 
   if (data.isUserAttendee == true) {
-    out.w("<div class=\"text-center\"><div class=\"col-xs-8\"><input id=\"new_question_id\" type=\"text\" class=\"form-control input-sm\" value=\"\" placeholder=\"Add your question\"></div><div class=\"col-xs-2\"><input id=\"new_question_priority_id\" type=\"text\" class=\"form-control input-sm\" value=\"\" placeholder=\"set priority\"></div><div class=\"col-xs-2\"><button type=\"button\" class=\"btn btn-default btn-sm btn-block\" onclick=\"addNewQuestion()\">Add</button></div></div>");
+    out.w("<div class=\"text-center\"><div class=\"col-xs-8\"><input id=\"new_question_id\" type=\"text\" class=\"form-control input-sm\" value=\"\" placeholder=\"Add your question\"></div><div class=\"col-xs-2\"><input class=\"form-control input-sm\" id=\"new_question_priority_id\" type=\"number\" name=\"rate\" min=\"1\" max=\"10\" value=\"\" placeholder=\"set priority\"><h6> 0 to 10</h6></div><div class=\"col-xs-2\"><button type=\"button\" class=\"btn btn-default btn-sm btn-block\" onclick=\"addNewQuestion('" +
+      marko_escapeXmlAttr(data.username) +
+      "')\">Add</button></div></div>");
   }
 
-  out.w("</div></div><div class=\"panel-footer\"><div class=\"row text-center\"></div></div></div></div></div></div><script type=\"text/javascript\" src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script><script type=\"text/javascript\" src=\"bower_components/bootstrap/dist/js/bootstrap.min.js\"></script><script src=\"js/app/Questions/Question.js\"></script><script src=\"js/app/Utilities/const.js\"></script><script src=\"js/app/index.js\"></script>");
+  out.w("</div></div><div class=\"panel-footer\"><div class=\"row text-center\"></div></div></div></div></div></div><script type=\"text/javascript\" src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script><script type=\"text/javascript\" src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script><script src=\"js/app/Questions/Question.js\"></script><script src=\"js/app/Utilities/const.js\"></script><script src=\"js/app/index.js\"></script>");
 
-  await_reorderer_tag({}, out, __component, "60");
+  await_reorderer_tag({}, out, __component, "61");
 
   out.w("</div>");
 
   init_components_tag({}, out);
 
-  await_reorderer_tag({}, out, __component, "61");
+  await_reorderer_tag({}, out, __component, "62");
 
   out.w("</body></html>");
 }

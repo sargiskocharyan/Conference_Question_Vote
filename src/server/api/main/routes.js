@@ -15,7 +15,6 @@ router.get('/', async ctx => {
     let sortedQuestions = sortByPriority(questions);
 
     let user = await userController.getLoggedInUser();
-    console.log("dm in main route==== ", user);
     let data = {};
     if (user[0])
     {
