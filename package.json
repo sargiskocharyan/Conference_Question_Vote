@@ -11,7 +11,7 @@
   "author": "Sargis Kocharyan",
   "license": "ISC",
   "dependencies": {
-    "koa": "^2.4.1",
+    "koa": "^2.5.0",
     "koa-bodyparser": "^4.2.0",
     "koa-cors": "0.0.16",
     "koa-response-time": "^2.0.0",

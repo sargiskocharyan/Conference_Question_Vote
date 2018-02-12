@@ -1,17 +1,7 @@
-var data_main = {};
 
 
 $(document).ready(function(){
 
-    getAppData(function (err, res) {
-        if (!err) {
-            data_main = res;
-        }
-        else {
-            console.log(err);
-        }
-
-    });
 
 });
 
@@ -19,7 +9,7 @@ $(document).ready(function(){
 
 function getAppData(completion){
 
-    $.get(API_MAIN_DATA, function(data, status){
+    $.get(API_MAIN_DATA, function(data, status) {
         if (data) {
             completion(null, data);
         }
@@ -67,14 +57,14 @@ function deleteQuestion(id){
         });
 }
 
-function  addNewQuestion() {
+function  addNewQuestion(username) {
     let content = document.getElementById('new_question_id').value;
     let priority =  document.getElementById('new_question_priority_id').value;
     if (priority == null){
         priority = 0;
     }
     if (content != "") {
-        const data = {content:content, priority:priority, owner:dm.user, status:"open"};
+        const data = {content:content, priority:priority, owner:username, status:"open"};
         $.post(API_ADD_QUESTION, data,
             function(returnedData){
                 location.reload();

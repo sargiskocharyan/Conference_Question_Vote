@@ -26,13 +26,7 @@ function render(input, out, __component, component, state) {
   out.w("<div class=\"container\"><div class=\"navbar navbar-info\"><div class=\"container-fluid\"><div class=\"navbar-header\"><h1></h1></div><div class=\"nav navbar-nav navbar-right login-bar\">");
 
   if (((data.isUserAdmin == false) && (data.isUserLecturer == false)) && (data.isUserAttendee == false)) {
-    out.w("<p>" +
-      marko_escapeXml(data.isUserAdmin) +
-      "</p><p>" +
-      marko_escapeXml(data.isUserLecturer) +
-      "</p><p>" +
-      marko_escapeXml(data.isUserAttendee) +
-      "</p><a href=\"/api/login\">Login</a>");
+    out.w("<a href=\"/api/login\">Login</a>");
   } else {
     out.w("<div class=\"col-xs center_button\"><p>" +
       marko_escapeXml(data.username) +
@@ -78,7 +72,7 @@ function render(input, out, __component, component, state) {
           out.w("</div></div><hr>");
         });
       }
-    }, out, __component, "28");
+    }, out, __component, "25");
 
   out.w("<hr><div class=\"row\">");
 
@@ -88,13 +82,13 @@ function render(input, out, __component, component, state) {
 
   out.w("</div></div><div class=\"panel-footer\"><div class=\"row text-center\"></div></div></div></div></div></div><script type=\"text/javascript\" src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script><script type=\"text/javascript\" src=\"bower_components/bootstrap/dist/js/bootstrap.min.js\"></script><script src=\"js/app/Questions/Question.js\"></script><script src=\"js/app/Utilities/const.js\"></script><script src=\"js/app/index.js\"></script>");
 
-  await_reorderer_tag({}, out, __component, "63");
+  await_reorderer_tag({}, out, __component, "60");
 
   out.w("</div>");
 
   init_components_tag({}, out);
 
-  await_reorderer_tag({}, out, __component, "64");
+  await_reorderer_tag({}, out, __component, "61");
 
   out.w("</body></html>");
 }
